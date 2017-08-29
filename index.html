@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>What we saying today?</title>
+  
+  <script src="https://unpkg.com/vue"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+     <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Inconsolata">
+
+<script type="text/javascript">
+    
+    function typografy() {
+            var colorArray = ['#369', '#000', '#aaa'];
+
+            $(".js_typografy").each(function () {
+                var j = getRandomInt(0, colorArray.length - 1); 
+               $(this).css('color', colorArray[j]);
+            });
+        }
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+    var keyword = "mountain views";
+ 
+    $(document).ready(function()
+    {
+        typografy();
+
+        $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+        {
+            tags: keyword,
+            tagmode: "any",
+            format: "json"
+        },
+        function(data) {
+            var rnd = Math.floor(Math.random() * data.items.length);
+
+            var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
+
+            $('body').css('background-image', "url('" + image_src + "')");
+            $('body').css('background-size', 'cover');
+            //$('body').css('filter', 'blur(5px)');
+        });
+    });
+    </script>
+
+<style>
+    #app
+    {
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    }
+
+    @font-face 
+    {
+        font-family: a;
+        src: url(fonts/ITALO_regular.otf);
+    }
+
+    p{
+        font-size:100px;
+        font-family: a, Inconsolata, Baloo Bhaijaan;
+        text-align: center;
+        text-shadow: 4px 4px 4px #000;
+        }
+</style>
+</head>
+<body>
+  <div id="app">
+      <p class="js_typografy">
+    {{ message }}
+    </p>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Motivational Quote 1!'
+      }
+    })
+  </script>
+</body>
+</html>
