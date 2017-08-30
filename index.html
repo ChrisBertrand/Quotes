@@ -3,16 +3,22 @@
 <head>
   <title>What we saying today?</title>
   
-  <!-- <script src="https://unpkg.com/vue"></script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Inconsolata"> -->
+  <script type="text/javascript" src="quotes.js"></script> 
 
 <script type="text/javascript">
     function typografy() {
             var colorArray = ['#369', '#000', '#aaa', '#ccc', 'blue', 'red', 'orange', 'yellow', 'purple', 'green', 'pink'];
             var fontArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'];
             
-            $(".js_typografy").each(function () {
+            $(".quote").each(function () {
+                var j = getRandomInt(0, colorArray.length - 1); 
+                var f = getRandomInt(0, fontArray.length - 1); 
+               $(this).css('color', colorArray[j]);
+               $(this).css('font-family', fontArray[f]);     
+            });
+
+            $(".name").each(function () {
                 var j = getRandomInt(0, colorArray.length - 1); 
                 var f = getRandomInt(0, fontArray.length - 1); 
                $(this).css('color', colorArray[j]);
@@ -23,24 +29,30 @@
                 var j = getRandomInt(0, colorArray.length - 1); 
                $(this).css('background-color', colorArray[j]);
             });
+
+            var q = getRandomInt(0, quotes.length - 1);
+            $(".quote").text(quotes[q].quote);
+            $(".name").text(quotes[q].attrib);
         }
 
         function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
  
+       
+
     $(document).ready(function()
     {
         typografy();
 
-        $.get('quotes.txt', function(data) 
-        {
-            // data.split(",")
-            var lines = data.split("\n");
-            var q = getRandomInt(0, lines.length - 1); 
-            var text =lines[q];
-            $(".js_typografy").text(text);
-        });
+        // $.get('quotes.txt', function(data) 
+        // {
+        //     // data.split(",")
+        //     var lines = data.split("\n");
+        //     var q = getRandomInt(0, lines.length - 1); 
+        //     var text =lines[q];
+        //     $(".js_typografy").text(text);
+        // });
     });
 </script>
 
@@ -72,7 +84,13 @@
     margin: auto;
     }
 
-    p{
+    p.quote{
+        font-size:50px;
+        text-align: center;
+        text-shadow: 4px 4px 4px #000;
+    }
+
+    p.name{
         font-size:50px;
         text-align: center;
         text-shadow: 4px 4px 4px #000;
@@ -94,7 +112,9 @@
 <div class="back">
 </div>
 <div id="app">
-    <p class="js_typografy"/>
+    <p class="quote"/>
+    <p class="name"/>
 </div>
 </body>
+
 </html>
