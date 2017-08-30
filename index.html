@@ -3,55 +3,66 @@
 <head>
   <title>What we saying today?</title>
   
-  <script src="https://unpkg.com/vue"></script>
-
+  <!-- <script src="https://unpkg.com/vue"></script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-     <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Inconsolata">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Inconsolata"> -->
 
 <script type="text/javascript">
-    
     function typografy() {
-            var colorArray = ['#369', '#000', '#aaa'];
-
+            var colorArray = ['#369', '#000', '#aaa', '#ccc', 'blue', 'red', 'orange', 'yellow', 'purple', 'green', 'pink'];
+            var fontArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'];
+            
             $(".js_typografy").each(function () {
                 var j = getRandomInt(0, colorArray.length - 1); 
+                var f = getRandomInt(0, fontArray.length - 1); 
                $(this).css('color', colorArray[j]);
+               $(this).css('font-family', fontArray[f]);     
+            });
+
+            $(".back").each(function () {
+                var j = getRandomInt(0, colorArray.length - 1); 
+               $(this).css('background-color', colorArray[j]);
             });
         }
 
         function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
-
-    var keyword = "mountain views";
  
     $(document).ready(function()
     {
         typografy();
 
-        $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+        $.get('quotes.txt', function(data) 
         {
-            tags: keyword,
-            tagmode: "any",
-            format: "json"
-        },
-        function(data) {
-            var rnd = Math.floor(Math.random() * data.items.length);
-
-            var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
-
-            $('body').css('background-image', "url('" + image_src + "')");
-            $('body').css('background-size', 'cover');
-            //$('body').css('filter', 'blur(5px)');
+            // data.split(",")
+            var lines = data.split("\n");
+            var q = getRandomInt(0, lines.length - 1); 
+            var text =lines[q];
+            $(".js_typografy").text(text);
         });
     });
-    </script>
+</script>
 
 <style>
+    @font-face {font-family: a; src: url('fonts/ITALO_regular.otf');}
+    @font-face {font-family: b; src: url('fonts/Bolten Regular.otf');}
+    @font-face {font-family: c; src: url('fonts/Canter Bold 3D.otf');}
+    @font-face {font-family: d; src: url('fonts/NORTHWEST-Bold.otf');}
+    @font-face {font-family: e; src: url('fonts/Reprise Stamp.ttf');}
+    @font-face {font-family: f; src: url('fonts/Portal Black.otf');}
+    @font-face {font-family: g; src: url('fonts/Sail-Regular.otf');}
+    @font-face {font-family: h; src: url('fonts/Sofia-Regular.otf');}
+    @font-face {font-family: i; src: url('fonts/Neptern Harbour.otf');}
+    @font-face {font-family: j; src: url('fonts/IkraSlab.ttf');}
+    @font-face {font-family: k; src: url('fonts/Headline.ttf');}
+    @font-face {font-family: l; src: url('fonts/Pacifico.ttf');}
+    @font-face {font-family: m; src: url('fonts/marguerite.ttf');}
+    @font-face {font-family: n; src: url('fonts/Headline.ttf');}
+
     #app
     {
-    width: 500px;
+    width: 90%;
     height: 300px;
     position: absolute;
     top:0;
@@ -61,34 +72,29 @@
     margin: auto;
     }
 
-    @font-face 
-    {
-        font-family: a;
-        src: url(fonts/ITALO_regular.otf);
-    }
-
     p{
-        font-size:100px;
-        font-family: a, Inconsolata, Baloo Bhaijaan;
+        font-size:50px;
         text-align: center;
         text-shadow: 4px 4px 4px #000;
-        }
+    }
+
+    .back
+    {
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        border: 15px solid ccc;
+        background-image: url("http://lorempixel.com/800/600/nature/");
+        background-size: cover;
+        filter: blur(5px);
+    }
 </style>
+
 </head>
 <body>
-  <div id="app">
-      <p class="js_typografy">
-    {{ message }}
-    </p>
-  </div>
-
-  <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        message: 'Motivational Quote 1!'
-      }
-    })
-  </script>
+<div class="back">
+</div>
+<div id="app">
+    <p class="js_typografy"/>
+</div>
 </body>
 </html>
