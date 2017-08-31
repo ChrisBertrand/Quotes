@@ -3,27 +3,29 @@
 <head>
   <title>What we saying today?</title>
   
-
   <style>
     @font-face {font-family: a; src: url('fonts/ITALO_regular.otf');} /*good */
-    @font-face {font-family: b; src: url('fonts/Bolten Regular.otf');} /*change */
+    @font-face {font-family: b; src: url('fonts/Blenda Script.otf');} /*new */
     @font-face {font-family: c; src: url('fonts/Canter Bold 3D.otf');} /*good */
     @font-face {font-family: d; src: url('fonts/NORTHWEST-Bold.otf');} /*good */
     @font-face {font-family: e; src: url('fonts/Reprise Stamp.ttf');} /*good */
-    @font-face {font-family: f; src: url('fonts/Portal Black.otf');} /*change */
+    @font-face {font-family: f; src: url('fonts/KGManhattanScript.ttf');} /*change */
     @font-face {font-family: g; src: url('fonts/Sail-Regular.otf');} /*good */
     @font-face {font-family: h; src: url('fonts/Sofia-Regular.otf');} /*good */
-    @font-face {font-family: i; src: url('fonts/Neptern Harbour.otf');} /*change */
+    @font-face {font-family: i; src: url('fonts/Hamurz Free Version.otf');} /*new */
     @font-face {font-family: j; src: url('fonts/IkraSlab.ttf');} /*good */
-    @font-face {font-family: k; src: url('fonts/Headline.ttf');} /*change */
+    @font-face {font-family: k; src: url('fonts/Jellee-Roman.otf');} /*new */
     @font-face {font-family: l; src: url('fonts/Pacifico.ttf');} /*good */
     @font-face {font-family: m; src: url('fonts/marguerite.ttf');} /*good */
-    @font-face {font-family: n; src: url('fonts/Headline.ttf');} /*change */
+    @font-face {font-family: n; src: url('fonts/Love & Trust.ttf');} /*new */
+    @font-face {font-family: o; src: url('fonts/BebopSlabFace-Regular.otf');} /*new */
+    @font-face {font-family: p; src: url('fonts/Luthier-Regular.ttf');} /*new */
+    @font-face {font-family: q; src: url('fonts/Action_Man.ttf');} /*new */
 
     #app
     {
     width: 90%;
-    height: 300px;
+    height: 550px;
     position: absolute;
     top:0;
     bottom: 0;
@@ -33,13 +35,13 @@
     }
 
     p.quote{
-        font-size:50px;
+        font-size:60px;
         text-align: center;
         text-shadow: 4px 4px 4px #000;
     }
 
     p.name{
-        font-size:50px;
+        font-size:75px;
         text-align: center;
         text-shadow: 4px 4px 4px #000;
     }
@@ -48,11 +50,9 @@
     {
         position: absolute;
         top: 0; right: 0; bottom: 0; left: 0;
-        border: 15px solid ccc;
-        
+        border: 5px solid #ccc;
         background-size: cover;
         filter: blur(5px);
-        background-image: url("http://lorempixel.com/800/600/nature/");
         -webkit-animation: myfirst 5s ; /* Chrome, Safari, Opera */
         animation: myfirst 5s ;
       }
@@ -76,15 +76,26 @@
 <script type="text/javascript">
     function typografy() {
             var colorArray = ['#369', '#000', '#aaa', '#ccc', 'blue', 'red', 'orange', 'yellow', 'purple', 'green', 'pink'];
-            var fontArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'];
+            var fontArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q'];
+            var imageArray = ['nature', 'abstract', 'food', 'cats']
+
+            //First write the quote
+            var q = getRandomInt(0, quotes.length - 1);
+            var $numWords = quotes[q].quote.split(" ").length;
+            $(".quote").text(quotes[q].quote);
+            $(".name").text(quotes[q].attrib);
             
+            // Now style the quote
             $(".quote").each(function () {
                 var j = getRandomInt(0, colorArray.length - 1); 
                 var f = getRandomInt(0, fontArray.length - 1); 
                $(this).css('color', colorArray[j]);
                $(this).css('font-family', fontArray[f]);     
+               if ($numWords > 30) { $(this).css('font-size', '35px');  }
+
             });
 
+            // Style the Author
             $(".name").each(function () {
                 var j = getRandomInt(0, colorArray.length - 1); 
                 var f = getRandomInt(0, fontArray.length - 1); 
@@ -92,26 +103,28 @@
                $(this).css('font-family', fontArray[f]);     
             });
 
+            // Create the background
             $(".back").each(function () {
-                var j = getRandomInt(0, colorArray.length - 1); 
+               var j = getRandomInt(0, colorArray.length - 1); 
+               var i = getRandomInt(0, imageArray.length - 1); 
+               var imageURL = 'url(http://lorempixel.com/640/480/'+imageArray[i]+')';
+               $(this).css('background-image', imageURL);
                $(this).css('background-color', colorArray[j]);
             });
-
-            var q = getRandomInt(0, quotes.length - 1);
-            $(".quote").text(quotes[q].quote);
-            $(".name").text(quotes[q].attrib);
         }
 
+        // Get's a random value between 2
         function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
+    // When the page is loaded
     $(document).ready(function()
     {
+        // Do our stuff!
         typografy();
     });
 </script>
-
 </head>
 <body>
 <div class="back">
