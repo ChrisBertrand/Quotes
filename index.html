@@ -1,155 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>What we saying today?</title>
+  <title>Inspiring and Uplifting Motivational Quotes | DesignPuddle.com</title>
   
-  <style>
-    @font-face {font-family: a; src: url('fonts/ITALO_regular.otf');} /*good */
-    @font-face {font-family: b; src: url('fonts/Blenda Script.otf');} /*new */
-    @font-face {font-family: c; src: url('fonts/Canter Bold 3D.otf');} /*good */
-    @font-face {font-family: d; src: url('fonts/NORTHWEST-Bold.otf');} /*good */
-    @font-face {font-family: e; src: url('fonts/Reprise Stamp.ttf');} /*good */
-    @font-face {font-family: f; src: url('fonts/KGManhattanScript.ttf');} /*change */
-    @font-face {font-family: g; src: url('fonts/Sail-Regular.otf');} /*good */
-    @font-face {font-family: h; src: url('fonts/Sofia-Regular.otf');} /*good */
-    @font-face {font-family: i; src: url('fonts/Hamurz Free Version.otf');} /*new */
-    @font-face {font-family: j; src: url('fonts/IkraSlab.ttf');} /*good */
-    @font-face {font-family: k; src: url('fonts/Jellee-Roman.otf');} /*new */
-    @font-face {font-family: l; src: url('fonts/Pacifico.ttf');} /*good */
-    @font-face {font-family: m; src: url('fonts/marguerite.ttf');} /*good */
-    @font-face {font-family: n; src: url('fonts/Love & Trust.ttf');} /*new */
-    @font-face {font-family: o; src: url('fonts/BebopSlabFace-Regular.otf');} /*new */
-    @font-face {font-family: p; src: url('fonts/Luthier-Regular.ttf');} /*new */
-    @font-face {font-family: q; src: url('fonts/Action_Man.ttf');} /*new */
-
-    #app
-    {
-    width: 90%;
-    height: 550px;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    -webkit-animation: MoveDown 5s ; 
-    animation: MoveDown 5s ;
-    -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-out;
-    }
-
-    p.quote{
-        font-size:60px;
-        text-align: center;
-        text-shadow: 4px 4px 4px #000;
-        -webkit-animation: myfirst 5s ; 
-        animation: myfirst 5s ;
-    }
-
-    p.name{
-        font-size:75px;
-        text-align: center;
-        text-shadow: 4px 4px 4px #000;
-        -webkit-animation: myfirst 5s ; 
-        animation: myfirst 5s ;
-    }
-
-    .back
-    {
-        position: absolute;
-        top: 0; right: 0; bottom: 0; left: 0;
-        border: 5px solid #ccc;
-        background-size: cover;
-        filter: blur(5px);
-        -webkit-animation: myfirst 5s ;
-        animation: myfirst 5s ;
-      }
-    
-      /* Chrome, Safari, Opera */
-      @-webkit-keyframes myfirst {
-        from {opacity: 0.2;}
-        to {opacity: 1;}
-      }
-
-       /* Chrome, Safari, Opera */
-       @-webkit-keyframes MoveDown {
-        0%  {top: 0px;}
-        100% {top: 150px;}
-      }
-    
-      /* Standard syntax */
-      @keyframes myfirst {
-        from {opacity: 0.2;}
-        to {opacity: 1;}
-      }
-
-      /* Standard syntax */
-      @keyframes MoveDown {
-        0%  {top: 0px;}
-        100% {top: 150px;}
-      }
- </style>
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script type="text/javascript" src="quotes.js"></script> 
+  <script type="text/javascript" src="typography.js"></script> 
+  <link rel="stylesheet" type="text/css" href="styles.css">
 
 <script type="text/javascript">
-    function typografy() {
-            var colorArray = ['#369', '#000', '#aaa', '#ccc', 'blue', 'red', 'orange', 'yellow', 'purple', 'green', 'pink'];
-            var fontArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q'];
-            var imageArray = ['nature', 'abstract', 'food', 'cats']
-
-            //First write the quote
-            var q = getRandomInt(0, quotes.length - 1);
-            var $numWords = quotes[q].quote.split(" ").length;
-            $(".quote").text(quotes[q].quote);
-            $(".name").text(quotes[q].attrib);
-            
-            // Now style the quote
-            $(".quote").each(function () {
-                var j = getRandomInt(0, colorArray.length - 1); 
-                var f = getRandomInt(0, fontArray.length - 1); 
-               $(this).css('color', colorArray[j]);
-               $(this).css('font-family', fontArray[f]);     
-               if ($numWords > 30) { $(this).css('font-size', '35px');  }
-
-            });
-
-            // Style the Author
-            $(".name").each(function () {
-                var j = getRandomInt(0, colorArray.length - 1); 
-                var f = getRandomInt(0, fontArray.length - 1); 
-               $(this).css('color', colorArray[j]);
-               $(this).css('font-family', fontArray[f]);     
-            });
-
-            // Create the background
-            $(".back").each(function () {
-               var j = getRandomInt(0, colorArray.length - 1); 
-               var i = getRandomInt(0, imageArray.length - 1); 
-            //    var imageURL = 'url(http://lorempixel.com/640/480/'+imageArray[i]+')';
-            var imageURL = 'url(http://pipsum.com/800x600.jpg)';
-               $(this).css('background-image', imageURL);
-               $(this).css('background-color', colorArray[j]);
-            });
-        }
-
-        // Get's a random value between 2
-        function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
-
     // When the page is loaded
     $(document).ready(function()
     {
         // Do our stuff!
         typografy();
+        //window.addEventListener( 'resize', resize );
+        //window.addEventListener( 'click', click );
+        init();
     });
 </script>
 </head>
 <body>
 <div class="back">
+        <canvas id="c1"></canvas>
+        <canvas id="c2"></canvas>
 </div>
 <div id="app">
     <p class="quote"/>
@@ -157,3 +31,6 @@
 </div>
 </body>
 </html>
+
+<!-- Put at the bottom to allow the dom to load -->
+<script type="text/javascript" src="back.js"></script>

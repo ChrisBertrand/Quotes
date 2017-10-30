@@ -1,4 +1,28 @@
  var quotes = [{
+  "attrib": "Tyrone Hopes",
+  "quote": "Motivational Quotes, motivate me to be more motivating!."
+},
+{
+"attrib": "Norman Vincent Peale",
+"quote": "Believe in yourself! Have faith in your abilities! Without a humble but reasonable confidence in your own powers you cannot be successful or happy."
+},
+{
+  "attrib": "Walt Disney",
+  "quote": "If you can dream it, you can do it."
+  },
+  {
+    "attrib": "George Whitefield",
+    "quote": "Press forward. Do not stop, do not linger in your journey, but strive for the mark set before you."
+    },
+    {
+      "attrib": "Clement Stone",
+      "quote": "Aim for the moon. If you miss, you may hit a star."
+      },
+      {
+        "attrib": "Michael Korda",
+        "quote": "One way to keep momentum going is to have constantly greater goals."
+        },
+   {
             "attrib": "Steve Jobs",
             "quote": "Design is not just what it looks like and feels like. Design is how it works."
           }, {

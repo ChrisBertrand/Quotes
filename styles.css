@@ -1,0 +1,103 @@
+@font-face {font-family: a; src: url('fonts/ITALO_regular.otf');}
+@font-face {font-family: b; src: url('fonts/Blenda Script.otf');}
+@font-face {font-family: c; src: url('fonts/Canter Bold 3D.otf');}
+@font-face {font-family: d; src: url('fonts/Butler_Regular.otf');}
+@font-face {font-family: e; src: url('fonts/Reprise Stamp.ttf');}
+@font-face {font-family: f; src: url('fonts/Cutepunk_Bold.otf');}
+@font-face {font-family: g; src: url('fonts/Sail-Regular.otf');}
+@font-face {font-family: h; src: url('fonts/Sofia-Regular.otf');} 
+@font-face {font-family: i; src: url('fonts/Hamurz Free Version.otf');} 
+@font-face {font-family: j; src: url('fonts/IkraSlab.ttf');}
+@font-face {font-family: k; src: url('fonts/Jellee-Roman.otf');} 
+@font-face {font-family: l; src: url('fonts/leafy.otf');} 
+@font-face {font-family: m; src: url('fonts/CrimsonText-SemiBold.ttf');}
+@font-face {font-family: n; src: url('fonts/Love & Trust.ttf');} 
+@font-face {font-family: o; src: url('fonts/BebopSlabFace-Regular.otf');} 
+@font-face {font-family: p; src: url('fonts/Luthier-Regular.ttf');} 
+@font-face {font-family: q; src: url('fonts/Action_Man.ttf');} 
+
+#app
+{
+width: 90%;
+height: 550px;
+position: absolute;
+top:0;
+bottom: 0;
+left: 0;
+right: 0;
+margin: auto;
+-webkit-animation: MoveDown 5s ; 
+animation: MoveDown 5s ;
+-webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+animation-fill-mode: forwards;
+animation-timing-function: ease-out;
+}
+
+p.quote{
+    font-size:60px;
+    text-align: center;
+    text-shadow: 4px 4px 4px #000;
+    -webkit-animation: myfirst 5s ; 
+    animation: myfirst 5s ;
+}
+
+p.name{
+    font-size:75px;
+    text-align: center;
+    text-shadow: 4px 4px 4px #000;
+    -webkit-animation: myfirst 5s ; 
+    animation: myfirst 5s ;
+}
+
+.back
+{
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    border: 5px solid #ccc;
+    background-size: cover;
+    filter: blur(5px);
+    -webkit-animation: myfirst 5s ;
+    animation: myfirst 5s ;
+  }
+
+  /* Chrome, Safari, Opera */
+  @-webkit-keyframes myfirst {
+    from {opacity: 0.2;}
+    to {opacity: 1;}
+  }
+
+   /* Chrome, Safari, Opera */
+   @-webkit-keyframes MoveDown {
+    0%  {top: 0px;}
+    100% {top: 150px;}
+  }
+
+  /* Standard syntax */
+  @keyframes myfirst {
+    from {opacity: 0.2;}
+    to {opacity: 1;}
+  }
+
+  /* Standard syntax */
+  @keyframes MoveDown {
+    0%  {top: 0px;}
+    100% {top: 150px;}
+  }
+
+  /* Background CSS */
+  body {
+	background: #000;
+	overflow: hidden;
+}
+
+canvas {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+#c2 {
+    opacity: 1;
+}
